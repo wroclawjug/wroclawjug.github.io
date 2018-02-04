@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div style=\"text-align: center\">\n  <img [src]=\"logoImage\" style=\"width: 50px; display: inline-block;\" />\n  <h1 style=\"display: inline-block;\">WrocławJUG Random Attendee</h1>\n</div>\n<attendees>ha</attendees>\n"
+module.exports = "<div style=\"text-align: center\">\n  <img src=\"{{logoImage}}\" style=\"width: 50px; display: inline-block;\" />\n  <h1 style=\"display: inline-block;\">WrocławJUG Random Attendee</h1>\n</div>\n<attendees>ha</attendees>\n"
 
 /***/ }),
 
@@ -56,7 +56,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var core_1 = __webpack_require__("../../../core/@angular/core.es5.js");
 var AppComponent = (function () {
     function AppComponent() {
-        this.logoImage = '../assets/img/WroclawJUG.png';
+        this.logoImage = 'assets/img/WroclawJUG.png';
     }
     return AppComponent;
 }());
