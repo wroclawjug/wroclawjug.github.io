@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>WrocławJUG</title>
+
+    <link rel="shortcut icon" type="image/png" href="../favicon.png"/>
+    <link rel="stylesheet" type="text/css" href="../css/simple-grid.min.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <a href="../"><img align="right" width="50%" src="../logo/WroclawJUG.png"></a>
+        </div>
+        <div class="col-9">
+            <h1>WrocławJUG prezentuje:</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <img src="FB_grafika_JVM.jpg" width="960px">
+        </div>
+    </div>
+
+    <div class="row">
+        <p>
+            <a href="/">WrocławJUG</a> wraz z firmą <a href="https://sii.pl/" target="_blank">Sii</a> oraz
+            <a href="http://symentis.pl/" target="_blank">Symentis</a> zapraszają na warsztaty z Jarkiem Pałką,
+            pt.: "JVM: przez dziurkę od klucza".
+        </p>
+        <p>
+            Ilość miejsc jest mocno ograniczona, dlatego prosimy o roztropne zapisywanie się na te
+            warsztaty. Dla nieusprawiedliwionych nieobecności będą wyciągane konsekwencje!
+        </p>
+        <p>
+        <h3>Opis warsztatów:</h3>
+        </p>
+        <p>
+        <h4># JVM: przez dziurkę od klucza</h4>
+        </p>
+        <p>
+            JVM to złożona maszyna, która napędza nasze systemy. Codziennie w pocie czoła przerzuca terabajty obiektów
+            pomiędzy kolejnymi generacjami w GC, generuje strumienie optymalnego kodu skompilowanego przez jeden z
+            kompilatorów JIT, w międzyczasie próbując dogadać się z systemem operacyjnym. Jednak nie zawsze w naszej
+            maszynowni wszystko przebiega zgodnie z planem. Gdzie szukać informacji? Jak odczytywać i interpretować
+            wartości metryk? Kiedy winny jest JVM, nasza aplikacja, a w jakim przypadku system operacyjny?
+        </p>
+        <p>
+        <h4>## Za uchyloną kotarą</h4>
+        </p>
+        <p>
+            Podczas tej sesji postaram się pokazać dostępne narzędzia, magiczne przełączniki i dostępne rozwiązania
+            potrzebne w pracy każdego "kryminologa" JVM. Sesja będzie przeznaczona dla osób, które zaczynają przygodę z
+            optymalizacją JVM. Porozmawiamy o zapisywaniu zdarzeń z JVM, narzędziach ukrytych w JDK, w tym także Java
+            Mission Control i Flight Recorder i zobaczymy jak Java płonie :). Nie zapomnimy też o narzędziach dostępnych
+            w systemie operacyjnym Linux.
+        </p>
+        <p>
+        <h4>## Przyłapani w akcie</h4>
+        </p>
+        <p>
+            Uzbrojeni w narzędzia i wiedzę, podczas tej sesji spróbujemy przekuć teorię w praktykę. Na naszej drodze
+            staną zasobożerne procesy, wściekle pożerające CPU, RAM i IOOPS naszego systemu. Spróbujemy je odnaleźć i
+            korzystając z narzędzi, zidentyfikować źródło problemu. Na dostarczonych serwerach uruchomione będą procesy
+            JVM, a my bez dostępu do kodu źródłowego oddamy się zawiłościom inwestygacji i wkroczymy w świat
+            kryminalistyki JVM.
+        </p>
+        <p>
+        <h4>## Błogosławieni, którzy ujrzeli maszynę</h4>
+        </p>
+        <p>
+            Ten rozdział poświęcimy JMH (Java Microbenchmark Harness), narzędziu które pozwoli nam pisać testy
+            wydajnościowe naszego kodu. Poznamy API JMH, bogaty zestaw opcji oraz jak konstruować testy wydajnościowe by
+            nie ulec iluzji, iż wszystko działa poprawnie. To wszystko na kilku przykładach, które między innymi
+            porównają wydajność struktur danych dostępnych w Java SDK.
+        </p>
+        <p>
+        <h4>## Epilog</h4>
+        </p>
+        <p>
+            Zapraszam Was na podróż w głąb maszyny. Zabierzcie ze sobą terminal, Java 8, ulubione IDE i dziecięcą
+            ciekawość. Warsztaty zakładają, że programujecie w Java na przyzwoitym poziomie, a JVM jest Wam obcy, jednak
+            macie w sobie głód zrozumienia, jak to wszystko działa.
+        </p>
+        <p>
+            Poziom trudności: <strong>HARD</strong>
+        </p>
+        <p>
+            Język warsztatów: <strong>Polski</strong>
+        </p>
+        <p>
+            Prelegent: <strong>Jarosław Pałka</strong>
+        </p>
+        <p>
+        <h3>Bio:</h3>
+        </p>
+        <p>
+            Jarek Pałka - od ponad 10 lat w branży IT, jako administrator baz danych, programista, architekt, manager i
+            „inżynier od spraw katastrof”. Brałem udział w małych, średnich i nonsensownie dużych projektach,
+            prowadzonych zgodnie zasadami „waterfall”, Agile oraz przy braku jakichkolwiek metodyk, z tym samym zawsze
+            skutkiem. Co doprowadziło mnie do wniosku, że nie ważne co robisz tak długo, jak robisz to dobrze, w
+            najprostszy z możliwych sposobów i używasz właściwych narzędzi które wykonają pracę za Ciebie. W
+            międzyczasie dałem się porwać ideą TDD oraz Software Craftmanship, do granic możliwości wyeksploatować tak
+            piękne w swej prostocie pomysły jak REST, JavaScript i NOSQL, by potem porzucić je by zgłębić tajniki
+            "system thinking" i zachwycić się siłą jaką niesie z sobą "metafora" i odkryć, że rządzą nami te same prawa
+            "natury". Od czasu do czasu można usłyszeć moje niskiej jakości żarty na temat architektury na konferencjach
+            w Polsce. W chwilach wolnych członek SSEEP i autor bloga na
+            <a href="http://geekyprimitives.wordpress.com/">geekyprimitives.wordpress.com</a>.
+        </p>
+        <h3>Sponsorzy:</h3>
+        <h4><a href="https://sii.pl/" target="_blank"><img src="Logo_Sii_przezroczyste.png" width="300px"></a></h4>
+        <p>
+            <strong>Sii Polska jest ekspertem technologicznym</strong>, który zatrudnia ponad 3300 specjalistów w całej
+            Polsce. Jesteśmy najszybciej rozwijającą się firmą IT i inżynierii przemysłowej w Polsce. Realizujemy
+            projekty dla ponad 200 klientów z całego świata, którzy działają m.in. w takich branżach jak: bankowość,
+            hi-tech i elektronika, motoryzacja czy telekomunikacja.
+        </p>
+        <p>
+            <strong>Co jeszcze warto wiedzieć?</strong>
+        <ul>
+            <li>Sii trzykrotnie zostało nagrodzone tytułem Great Place to Work
+
+            <li>W ramach Sii działa 12 Centrów Kompetencyjnych oraz wewnętrzny dział badawczo-rozwojowy
+
+            <li>Sii ma 9 oddziałów w największych miastach w Polsce
+
+            <li>Wrocławski oddział Sii to ponad 400 ekspertów
+
+            <li>Siedziba Sii Wrocław mieści się w Sky Tower
+        </ul>
+        </p>
+        <p>
+            Dowiedz się więcej o firmie: <a href="https://sii.pl/">www.sii.pl</a>
+        </p>
+        <h4><a href="http://symentis.pl/" target="_blank"><img src="symentis-logo.png" width="300px"></a></h4>
+        <p>Symentis to nie tylko firma dostarczająca szkoleń i usług konsultacyjnych w obszarze rozwoju oprogramowania,
+            architektury systemów IT i rozwoju organizacji (w szczególności działów R&D).
+        </p>
+        <p>
+            Symentis to przede wszystkim grupa profesjonalistów, z wieloletnim doświadczeniem w branży rozwoju
+            oprogramowania, którzy swoje doświadczenie mogą potwierdzić nie tylko poprzez udział w międzynarodowych
+            projektach, ale także poprzez udział w projektach „open source”, a także jako aktywni członkowie lokalnych
+            społeczności programistów, organizujących i biorących udział w konferencjach, członkowie rad programowych i
+            prezenterzy.
+        </p>
+        <p>
+            Swoją pasję tworzenia rozwiązań i rozwoju organizacji, łączymy z pasją nieustannego poszerzania swoich
+            umiejętności, dzielenia się wiedzą z innymi i ciągłego zdobywania doświadczenia.
+        </p>
+        <p>
+            Nasze szkolenia i usługi budujemy wokół realnych potrzeb organizacji, dla której pracujemy – wyzwań przed
+            którymi stoi, nowych obszarów, które chce odkryć i zdobyć.
+        </p>
+    </div>
+</div>
+</body>
+</html>
