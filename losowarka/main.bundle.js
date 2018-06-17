@@ -25,7 +25,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "h1 {\n  font-size: 3em;\n  color: lightslategrey;\n  margin-bottom: 0;\n  text-align: center;\n}\n\n.logoSmall {\n  width: 50px;\n  display: inline-block;\n}\n\n.mainTitle {\n  display: inline-block;\n}\n", ""]);
+exports.push([module.i, "h1 {\n  font-size: 3em;\n  color: lightslategrey;\n  margin-bottom: 0;\n  text-align: center;\n}\n", ""]);
 
 // exports
 
@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div style=\"text-align: center\">\n  <!--<img src=\"/assets/img/WroclawJUG.png\" class=\"logoSmall\"/>-->\n  <!--<img src=\"assets/img/WroclawJUG.png\" class=\"logoSmall\"/> nie dziala-->\n  <!--<img src=\"../assets/img/WroclawJUG.png\" class=\"logoSmall\"/> nie-->\n  <!--<img src=\"/assets/img/WroclawJUG.png\" class=\"logoSmall\"/> nie dziala-->\n  <h1 class=\"mainTitle\">WrocławJUG Random Attendee</h1>\n</div>\n<attendees>ha</attendees>\n"
+module.exports = "<div style=\"text-align: center\">\n  <img [src]=\"logoImage\" style=\"width: 50px; display: inline-block;\" />\n  <h1 style=\"display: inline-block;\">WrocławJUG Random Attendee</h1>\n</div>\n<attendees>ha</attendees>\n"
 
 /***/ }),
 
@@ -56,6 +56,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var core_1 = __webpack_require__("../../../core/@angular/core.es5.js");
 var AppComponent = (function () {
     function AppComponent() {
+        this.logoImage = '../assets/img/WroclawJUG.png';
     }
     return AppComponent;
 }());
@@ -319,6 +320,7 @@ var AttendeesService = (function () {
         return this.jsonp.get(this.buildLastMeetupUrl(eventId, token))
             .toPromise()
             .then(function (response) { return response.json().data; })
+            .then(function (response) { return response.filter(function (attendee) { return attendee.rsvp.response === 'yes'; }); })
             .catch(this.handleError);
     };
     AttendeesService.prototype.getMemberFull = function (attende, token) {
