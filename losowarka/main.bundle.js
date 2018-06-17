@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div style=\"text-align: center\">\n  <img [src]=\"logoImage\" style=\"width: 50px; display: inline-block;\" />\n  <h1 style=\"display: inline-block;\">WrocławJUG Random Attendee</h1>\n</div>\n<attendees>ha</attendees>\n"
+module.exports = "<div style=\"text-align: center\">\n  <!--<img [src]=\"logoImage\" style=\"width: 50px; display: inline-block;\" />-->\n  <h1 style=\"display: inline-block;\">WrocławJUG Random Attendee</h1>\n</div>\n<attendees>ha</attendees>\n"
 
 /***/ }),
 
