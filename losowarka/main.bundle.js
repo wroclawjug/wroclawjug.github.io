@@ -56,7 +56,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var core_1 = __webpack_require__("../../../core/@angular/core.es5.js");
 var AppComponent = (function () {
     function AppComponent() {
-        this.logoImage = '../assets/img/WroclawJUG.png';
+        this.logoImage = '/assets/img/WroclawJUG.png';
     }
     return AppComponent;
 }());
