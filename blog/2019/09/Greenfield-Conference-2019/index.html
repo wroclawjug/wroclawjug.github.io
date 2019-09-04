@@ -5,6 +5,7 @@
     <title>WrocławJUG blog</title>
     <link rel="shortcut icon" type="image/png" href="../../../../favicon.png"/>
     <link rel="stylesheet" type="text/css" href="../../../../css/simple-grid.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../../css/blog.css"/>
 </head>
 <body>
 <div class="container">
@@ -18,10 +19,10 @@
     </div>
 </div>
 
-<div>
+<div class="container">
     <div>
         <h2>Greenfield Conference 2019</h2>
-        <img src="img/1.jpg" width="1024">
+        <img src="img/1.jpg">
         <p>Greenfield Conference 2019 była drugą edycją tej konferencji, zorganizowaną przez zielonogórską
             społeczność IT. Odbyła się 8 czerwca 2019 roku w salach Wydziału Informatyki, Elektrotechniki i
             Automatyki.</p>
@@ -30,7 +31,7 @@
             jakości i był na bieżąco uzupełniany. Minusem były bardzo wąskie korytarze i ludzie wręcz obijali się
             o siebie podchodząc po kawę czy herbatę. Widać to było szczególnie przy obiedzie, gdzie był problem ze
             znalezieniem skrawka miejsca, aby zjeść bez szturchania sąsiada.</p>
-        <img src="img/2.jpg" width="1024">
+        <img src="img/2.jpg">
         <p>Na dwóch piętrach były rozlokowane stoiska partnerów i sponsorów. Standardowo było można porozmawiać z
             przedstawicielami odnośnie charakterystyki pracy w danej firmie, przejrzeć oferty i zgarnąć kolejne
             gadżety jak powerbanki, termokubki, itp. Były też konkurencje i losowania nagród.</p>
@@ -38,14 +39,14 @@
         <p>Konferencja zaczęła się od świetnej prelekcji wygłoszonej przez Venkata Subramaniama odnośnie nadmiernej
             złożoności w systemach, które rozwijamy. Pełna aula, dużo trafnych spostrzeżeń i analogii...
             szczególnie do małżeństwa. Bardzo dobre otwarcie.</p>
-        <img src="img/5.jpg" width="1024">
+        <img src="img/5.jpg">
         <h3>Big Data Problem</h3>
         <p>Pierwsza prezentacja po podziale na ścieżki. Sama prelekcja nie była kompletnie związana z IT, mimo
             chwytliwego tytułu (buzzword Big Data). Autor prezentował jak w branży energetycznej, podczas cyfryzacji
             mierników zużycia prądu w domach, zaczęto zbierać gigantyczne ilości pomiarów, które w żaden
             sposób nie są analizowane ani nie mają specjalnej wartości z biznesowego punktu widzenia. Merytorycznie
             ciekawa prelekcja, ale trochę nietrafiona na ten typ konferencji.</p>
-        <img src="img/6.jpg" width="1024">
+        <img src="img/6.jpg">
         <h3>Cztery choroby</h3>
         <p>Prezentacja Piotra Przybyła o czterech chorobach, z którymi pewnie większości zdarzyło się zmierzyć.
             Sporo przykładów i śmiechu. Skrócona wersja setnego spotkania Wrocław JUG.</p>
@@ -53,9 +54,9 @@
         <p>and it was</p>
         <p>Najbardziej techniczna prezentacja, na której byłem. Bardzo dużo fragmentów skryptów do Infrastructure as
             a Code (niestety nie pamiętam czy CloudFormation czy Terraform) i dużo diagramów przedstawiających
-            kolejne architektury w chmurze Amazona. Miejscami było dużo
-            chaosu i ciężko było nadążyć za tym co się dzieje na slajdach i diagramach. Temat ciekawy, aczkowiek
-            bardziej nadający się na wpis na blogu firmowym niż na konferencję.</p>
+            kolejne architektury w chmurze Amazona. Miejscami było dużo chaosu i ciężko było nadążyć za tym co
+            się dzieje na slajdach i diagramach. Temat ciekawy, aczkowiek bardziej nadający się na wpis na blogu
+            firmowym niż na konferencję.</p>
         <h3>Architekt i jego skrzynka z narzędziami</h3>
         <p>Dochodzimy do prawdopodobnie najlepszej prezentacji podczas tej konferencji. Pełna sala (ludzie siedzieli na
             schodach) i Jarek Pałka jak zawsze zrobił robotę. Po kilku pierwszych zdaniach widać, że autor ma
@@ -69,23 +70,25 @@
             atomowe funkcje. Pokazane zostały kolejne podejścia do architektury poprzez podpinanie triggerów pod
             serwisy AWS, aby na koniec wpiąć się w maszynę stanów Step Functions. Lekka prezentacja pokazująca jak
             składać z klocków AWS kompletny workflow.</p>
-        <img src="img/3.jpg" width="1024">
+        <img src="img/3.jpg">
         <h3>Impostor syndrome, czyli dlaczego moje konto na Githubie jest puste</h3>
         <p>Prelekcja nietechniczna o tzw. Impostor syndrome. Warto było przyjść posłuchać Michała Grucy, aby
             uświadomić sobie, jak często spotykamy takie postawy czy to u siebie czy wśród wspołpracowników. Autor
             pokazał też przykładowe sposoby radzenia sobie z niniejszym syndromem.</p>
         <h3>Goodbye evil corp, hello self-employment</h3>
-        <p>Na koniec konferencji, ponownie w auli, była prezentacja Iwony Kubowicz z programistka.com o wadach i
-            zaletach przejścia na samozatrudnienie. Prelegentka opowiedziała o potencjalnych problemach i dylematach, z
-            którymi spotka się każdy, kto decyduje się na odejście od bezpiecznej umowy o prace. Pokrótce zostały
-            omówione kwestie urlopów, zwolnień lekarskich, jak działają wirtualne biura oraz jak współpracować z
-            księgową. Lekka prezentacja po całym dniu na salach Uniwersytetu, przydatna każdemu kogo korci otworzenie
-            własnej działalności i zmiana formy zatrudnienia.</p>
+        <p>Na koniec konferencji, ponownie w auli, była prezentacja Iwony Kubowicz z
+            <a href="https://programistka.com/">programistka.com</a> o wadach i zaletach przejścia na samozatrudnienie.
+            Prelegentka opowiedziała o potencjalnych problemach i dylematach, z którymi spotka się każdy, kto
+            decyduje się na odejście od bezpiecznej umowy o prace. Pokrótce zostały omówione kwestie urlopów,
+            zwolnień lekarskich, jak działają wirtualne biura oraz jak współpracować z księgową. Lekka prezentacja
+            po całym dniu na salach Uniwersytetu, przydatna każdemu kogo korci otworzenie własnej działalności i
+            zmiana formy zatrudnienia.</p>
         <h3>Podsumowanie</h3>
         <p>Dobrze spędzony dzień w Zielonej Górze (blisko rodzinnych stron 😉 ). Konferencja ogólnie na plus,
             prelekcje na dobrym, a niektóre rewelacyjnym poziomie. Widać było, że organizatorzy się
             bardzo zaangażowali, aby jak najlepiej przygotować event. Niestety na after party nie moglem
-            dotrzeć,aleMarek(@bendi007)mówi,żedałoradę🙂 DziękiWrocławskiJUGzawejściówkę!</p>
+            dotrzeć, ale Marek(<a href="https://twitter.com/bendi007">@bendi007</a>) mówi, że dało radę🙂</p>
+        <p>Dzięki WrocławskiJUG za wejściówkę!</p>
         <h3>Author: Rados&#322;aw J&oacute;zefowicz</h3>
     </div>
 </div>
