@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>WrocławJUG blog</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../favicon.png" />
+    <link rel="stylesheet" type="text/css" href="../../../../css/simple-grid.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../css/blog.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <a href="../../../../"><img align="right" width="50%" src="../../../../logo/WroclawJUG.png"></a>
+            </div>
+            <div class="col-9">
+                <h1>WrocławJUG blog</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div>
+            <h2>How to generate Proguard/R8 rules for Navigation component arguments</h2>
+            <img src="img/poster.jpg" height="400" />
+            <h3>The background</h3>
+            <p>Android Jetpack's <a href="https://developer.android.com/guide/navigation">
+                    Navigation component</a> is the modern solution for navigating between screens in Android apps.
+                It supports both activities and fragments (including dialogs). What is more,
+                it allows to <a href="https://developer.android.com/guide/navigation/navigation-pass-data">pass data</a>
+                to destinations.
+            </p>
+            <p>
+                Unfortunately there is a snag. If you read documentation carefully you'll find
+                the <a
+                    href="https://developer.android.com/guide/navigation/navigation-pass-data#proguard_considerations">Proguard
+                    considerations</a> section.
+                So every time you use non-primitive argument types you have to remember to either annotate
+                its classes with <code>@Keep</code> annotation or add corresponding <code>-keepnames</code> rules
+                to Proguard/R8 configuration (of course if you don't obfuscate your code then this problem is
+                irrelevant but most apps are obfuscated).
+            </p>
+            <p>
+                However, it's not a perfect solution.
+                For example when during refactoring you decide to pass something else as an argument (another class)
+                you need to either annotate the new class and remove annotation from previous one or update
+                affected rules respectively. It's quite inconvenient and error prone (errors in this matter
+                will usually be discovered at runtime of non-debug builds).
+            </p>
+            <h3>Gradle to the rescue!</h3>
+            <p>
+                It would be better if everything will work out of the box without necessity to make any additional
+                changes manually.
+                To achieve that we can create a buildscript task which looks for classes used as Navigation component
+                arguments
+                and then generates Proguard rules.
+            </p>
+            <p>
+                The algorithm is simple:
+                <ul>
+                    <li>For each XML file with navigation graph:</li>
+                    <ul>
+                        <li>For each distinct non-primitive navigation destination argument:</li>
+                        <ul>
+                            <li>Construct Proguard rule</li>
+                            <li>Write rule to the file (create it if not exist)</li>
+                        </ul>
+                    </ul>
+                    <li>Use generate file as Proguard file of the project</li>
+                </ul>
+                Note that in case of library project you need to use <a
+                    href="https://google.github.io/android-gradle-dsl/current/com.android.build.gradle.internal.dsl.DefaultConfig.html#com.android.build.gradle.internal.dsl.DefaultConfig:consumerProguardFiles">consumer</a>
+                Proguard file.
+            </p>
+            <h4>Show me the code!</h4>
+            <p>
+                In general, actions performed by buildscripts should be located inside the <a
+                    href="https://docs.gradle.org/current/userguide/more_about_tasks.html">task</a>.
+                Task can be defined directly in buildscript. However, for better readability we'll use
+                <code>buildSrc</code> folder.
+                Let's create a file <code>buildSrc/src/main/kotlin/GenerateNavArgsProguardRulesTask.kt</code> with the
+                skeleton:
+                <script src="https://gist.github.com/koral--/32efb27912d01e21effcfc165f6e290b.js"></script>
+                The class is declared abstract. This is not technically necessary but considered a good practice.
+                Gradle does not instantiate task classes directly but rather creates the wrapping subclasses.
+                Abstract modifier ensures that subclasses can be created and also prevents direct instantiations
+                somewhere in the code.
+            </p>
+            <p>
+                The next step is to declare inputs and outputs:
+                <script src="https://gist.github.com/koral--/dda2c1982673a8a781457d722c654dee.js"></script>
+                The input consists of all the navigation graph files. For simplicity, only default path of
+                main source set is handled. We also assume that there will be no other XML files there.
+                The output is a single file with Proguard rules inside project build directory.
+            </p>
+            <p>
+                Note the <code>@InputFiles</code> and <code>@OutputFile</code> annotations. If they are
+                present the task will only run when necessary. Roughly speaking if none of input and output
+                is changed since the latest invocation a task is assumed to be up-to-date and Gradle won't
+                waste the time on executing it again.
+                <code>@SkipWhenEmpty</code> as the name suggests cause that task will be skipped if there no
+                input files present. However, it will still execute if list of input files just became empty
+                since previous invocation.
+            </p>
+            <p>
+                Now we know what files to read and where to save the results, so let's do the main part of the task!
+                <script src="https://gist.github.com/koral--/3d845374aec61c9c54f8942e27f09e58.js"></script>
+                The algorithm is as follows:
+                <ol>
+                    <li>Find all <code>argument</code> nodes.</li>
+                    <li>For all these nodes take <code>argType</code> attribute.</li>
+                    <li>Filter out primitive types (assuming that their names does not contain a dot).</li>
+                    <li>Remove duplicates (by converting to set).</li>
+                    <li>For each item create a <code>-keepnames</code> rule.</li>
+                    <li>Write each rule to output file.</li>
+                </ol>
+                Note that XML parser is namespace aware.
+            </p>
+            <h4>The final touches</h4>
+            <p>
+                We can optionally set task group and description which will be displayed by Gradle (eg. in
+                <code>tasks</code> command)
+                or IDE. Additionally we can make our task cacheable.
+                The final code looks like that:
+                <script src="https://gist.github.com/koral--/20036578ab397c71e682ee57414587ff.js"></script>
+            </p>
+
+            <h3>Usage</h3>
+            <p>
+                Tasks need to be registered in order to be invoked. We can also set the dependencies
+                so they will be executed automatically.
+                In <code>build.gradle.kts</code> it may look like this:
+                <script src="https://gist.github.com/koral--/40c8b33aef18238bd544328460e1463d.js"></script>
+                <code>preBuild</code> task is executed before building and already registered by Android Gradle Plugin.
+                Don't forget to add custom Proguard rules path. Eg. for library project it may be:
+                <script src="https://gist.github.com/koral--/6c0f7a9ed4db29c811d249466d4b6bad.js"></script>
+            </p>
+
+            <h3>Conclusion</h3>
+            
+            
+            <p>Thanks to WrocławJUG for the JDD 2019 conference ticket!</p>
+            <h3>Author: Karol Wrótniak</h3>
+        </div>
+    </div>
+
+</body>
+
+</html>
