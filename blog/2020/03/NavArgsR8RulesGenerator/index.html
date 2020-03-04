@@ -97,12 +97,16 @@
             </p>
             <p>
                 Note the <code>@InputFiles</code> and <code>@OutputFile</code> annotations. If they are
-                present the task will only run when necessary. Roughly speaking if none of input and output
-                is changed since the latest invocation a task is assumed to be up-to-date and Gradle won't
+                present the task will only run when necessary. Roughly speaking if none of inputs and outputs
+                are changed since the latest invocation a task is assumed to be up-to-date and Gradle won't
                 waste the time on executing it again.
                 <code>@SkipWhenEmpty</code> as the name suggests cause that task will be skipped if there no
                 input files present. However, it will still execute if list of input files just became empty
                 since previous invocation.
+            </p>
+            <p>
+                Those annotations and as a consequence not executing unnecessary actions have a significant impact
+                on build times. Especially on debug/development builds performed by developers on their local machines.
             </p>
             <p>
                 Now we know what files to read and where to save the results, so let's do the main part of the task!
@@ -139,7 +143,11 @@
             </p>
 
             <h3>Conclusion</h3>
-            
+            <p>
+                Automatic generation of Proguard/R8 rules for Navigation Component destination arguments can be
+                easily implemented with help of Gradle. Don't forget to properly annotate inputs and outputs of custom 
+                Gradle tasks to not hinder build process performance.
+            </p>
             
             <p>Thanks to WrocławJUG for the JDD 2019 conference ticket!</p>
             <h3>Author: Karol Wrótniak</h3>
